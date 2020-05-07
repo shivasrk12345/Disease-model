@@ -8,8 +8,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
+  deploy:
     runs-on: self-hosted
 
     steps:
@@ -20,5 +19,9 @@ jobs:
         docker build -t flask-image .
         docker run --name flask-python -p 5010:5010 flask-image:latest
       timeout-minutes: 2
-    - name: Stop the container
-      run: docker stop flask-python
+  stop:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Stop the container
+        run: docker stop flask-python
