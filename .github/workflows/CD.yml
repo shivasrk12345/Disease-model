@@ -14,7 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
+    - name: Build image and deploy
       run: |
+        if  docker ps -a | grep flask-python; then docker rm -f flask-python; fi
         docker build -t flask-image .
-        docker run --name flask-container -p 5010:5010 flask-image:latest
+        docker run --name flask-python -p 5010:5010 flask-image:latest
