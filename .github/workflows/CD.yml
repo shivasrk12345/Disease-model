@@ -18,7 +18,7 @@ jobs:
         if  docker ps -a | grep flask-python; then docker rm -f flask-python; fi
         docker build -t flask-image .
         docker run --name flask-python -p 5010:5010 flask-image:latest
-      timeout-minutes: 30
+      timeout-minutes: 5
   stop:
     runs-on: self-hosted
 
