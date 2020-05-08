@@ -83,9 +83,11 @@ The following link directs you regarding installation of insomnia - [https://sup
 For Posting the data (In the JSON Format)
 
 Enter the below url in Postman or insomnia client
+
 1) http://104.154.136.35:5010/post/values
 
 For getting the results back, you can use the following url.
+
 2) http://104.154.136.35:5010/get_final_infected
 
 
@@ -139,6 +141,9 @@ If your self-hosted runner is a Ubuntu based instance.
 If docker isn't installed 
 
 Detailed steps for installation is given in the following link - [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04]
+
+
+### Screeshots
 
 
 
