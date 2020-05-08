@@ -80,15 +80,23 @@ The following link directs you regarding installation of insomnia - [https://sup
 
 ### Steps to access the model
 
+Start your self hosted runner,by running the ./run.sh --> a way to setup self-hosted runner is given in assumptions section.
+
+Here we are using a GCP hosted VM , so you can get the external ip address from there.
+
+Eg: external- ip : 104.154.136.35
+
+Then,
+
 For Posting the data (In the JSON Format)
 
 Enter the below url in Postman or insomnia client
 
-1) http://104.154.136.35:5010/post/values
+1) http://external-ip:5010/post/values
 
 For getting the results back, you can use the following url.
 
-2) http://104.154.136.35:5010/get_final_infected
+2) http://external-ip:5010/get_final_infected
 
 
 ### Development Procedure.
@@ -141,6 +149,21 @@ If your self-hosted runner is a Ubuntu based instance.
 If docker isn't installed 
 
 Detailed steps for installation is given in the following link - [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04]
+
+### Results 
+
+We have taken a the following input during the screenshot generation.
+
+{ 
+	"rows":"50",
+	"cols":"50",
+	"start":"1",
+	"end":"8",
+	"points":"[(5,4);(3,3)]"
+
+}
+
+We have also tested our code with a matrix size of [100,100].
 
 
 ### Screeshots
