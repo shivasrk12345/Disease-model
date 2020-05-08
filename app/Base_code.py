@@ -38,6 +38,8 @@ def set_values():
     points = request.json.get('points')
     import re
     z = re.findall("[0-9]+", points)
+    if(len(infectedpatients_location)!=0):
+        infectedpatients_location=[];
     for i in range(0, len(z), 2):
         infectedpatients_location.append((int(z[i]), int(z[i + 1])))
     dic["points"] = infectedpatients_location
