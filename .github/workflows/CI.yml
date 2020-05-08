@@ -5,12 +5,12 @@ name: Running TestCases
 
 on:
   push:
-    branches: [ development ]
+    branches: [ development , master]
   pull_request:
     branches: [ master ]
 
 jobs:
-  build:
+  build-test:
 
     runs-on: self-hosted
 
