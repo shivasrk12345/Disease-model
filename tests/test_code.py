@@ -14,7 +14,7 @@ def test_checkdatacalculate_display():
     data=Base_code.calculate_display();
     assert data is not None;
 
-"""
+
 def test_datatypeofcalculate_display():
     data=Base_code.calculate_display();
     assert type(data) == str
@@ -40,7 +40,7 @@ def test_dicinteral3results_calculate_display():
     dic= json.loads(data);
     assert type(dic['infected_patients']) == int ;
 
-
+"""
 
 
 def test_upload():

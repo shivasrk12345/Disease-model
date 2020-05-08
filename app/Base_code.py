@@ -8,9 +8,9 @@ points=""
 infectedpatients_location=[]
 
 import random
-import flask
-from flask import request
-from json import dumps
+import flask,json
+from flask import request,jsonify
+from json import dumps,dump,loads
 
 
 value =''
@@ -25,7 +25,7 @@ def set_values():
         start=1
         end=3
         points="(0,0)"
-        infectedpatients_location=[(0,0)]
+        infectedpatients_location=[]
     dic ={}
     rows= int(request.json.get('rows'))
     dic["rows"] = rows
@@ -41,14 +41,24 @@ def set_values():
     for i in range(0, len(z), 2):
         infectedpatients_location.append((int(z[i]), int(z[i + 1])))
     dic["points"] = infectedpatients_location
-    return dumps(dic)
+
+    print(dic.items());
+    #dump_string = dumps(dic)
+    #json_data = loads(dump_string)
+    response = app.response_class(
+        response=json.dumps(dic),
+        status=200,
+        mimetype='application/json'
+    )
+    print('response', response)
+    return response;
 
 @app.route("/get_final_infected",methods=["GET"])
 def calculate_display():
     matrix = [[0 for j in range(cols)] for i in range(rows)];
     antibody=[]
     for i in range(rows):
-        x,y=random.randint(0,rows),random.randint(0,cols);
+        x,y=random.randint(0,rows-1),random.randint(0,cols-1);
         antibody.append([x,y]);
 
 
@@ -60,13 +70,13 @@ def calculate_display():
 
     queue=deque();
     for x,y in infectedpatients_location:
-
+        matrix[x][y] = 1;
         queue.append((x,y,0));
     infectedpatients=len(queue);
-    starttime=2;
+    starttime=start;
     startpatientcount=0
     endpatientcount=0;
-    endtime=4
+    endtime=end;
     while(queue):
         x,y,time=queue.popleft();
         if(time==starttime):
@@ -74,7 +84,10 @@ def calculate_display():
         if(time==endtime):
             endpatientcount=infectedpatients;
             break;
-        for dx,dy in [[1,0],[-1,0],[0,1],[0,-1],[-1,-1],[-1,1],[1,1],[1,-1]]:
+
+        adjacent= [[1,0],[-1,0],[0,1],[0,-1],[-1,-1],[-1,1],[1,1],[1,-1]] # eight adjacents left,right,top bottom and corners -4
+        loc1, loc2 = random.randint(0, 7), random.randint(0,7); # picking 2 people among 8 adjacent people
+        for dx,dy in [adjacent[loc1],adjacent[loc2]]:
             if(0<=x+dx<rows and 0<=y+dy<cols ):
                 if(matrix[x+dx][y+dy]==0):
                     matrix[x+dx][y+dy]=1;
@@ -91,4 +104,4 @@ def calculate_display():
     #print(endpatientcount- startpatientcount);
     return dumps(dic)
 if __name__ == "__main__":
-    app.run(host ='0.0.0.0',port=5010,debug=True)
+    app.run(host ='127.0.0.1',port=5010,debug=True)
