@@ -145,6 +145,13 @@ Detailed steps for installation is given in the following link - [https://www.di
 
 ### Screeshots
 
+This the screenshot of how we make the call to the service.
+![](images/post_call.png)
+
+This screenshot gets us the final matrix and the infected persons.
+![](images/Get_out.png)
+
+
 
 
 
