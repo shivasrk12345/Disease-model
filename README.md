@@ -1,6 +1,6 @@
 # cs5213s20-project-g4
 
-### Authors - Nithivarn Reddy Shanigaram , Siva Rama Krishna Ghanta , Jagadish Chitturi
+### Authors - Siva Rama Krishna Ghanta, Nithivarn Reddy Shanigaram , Jagadish Chitturi
 
 ### Email - nithivarn.reddy.shanigaram-1@ou.edu , shivasrk1234@ou.edu , Jagadish.C.Chitturi-1@ou.edu
 
